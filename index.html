@@ -54,7 +54,7 @@
 
         .logo {
             display: inline-block;
-            width: 200px;
+            width: 240px;
             transition: transform 0.3s ease;
         }
 
@@ -521,7 +521,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Entre em Contacto</h2>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xyzjwqog" method="POST">
                 <div class="form-group">
                     <label for="name">Nome</label>
                     <input type="text" id="name" name="name" required>
@@ -549,7 +549,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Gestão Pro - Todos os direitos reservados</p>
+        <p>&copy; 20245 Admin+ - Todos os direitos reservados</p>
     </footer>
 
     <script>
@@ -603,22 +603,34 @@
             });
         });
 
-        // Form submission
+         // Form submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
+            // Check if form was successfully submitted via URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('contactForm').style.display = 'none';
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
 
-            // Get form data
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
+            // Optional: Change button text while submitting
+            const button = e.target.querySelector('.form-button');
+            if (button) {
+                button.textContent = 'A enviar...';
+                button.disabled = true;
+            }
+        });
 
-            // Here you would normally send this to your server
-            console.log('Form data:', data);
-
-            // Show success message
-            alert('Obrigado pela sua mensagem! Entraremos em contacto consigo brevemente.');
-
-            // Reset form
-            e.target.reset();
+        // Check on page load if coming back from Formspree
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('contactForm').style.display = 'none';
+                // Scroll to contact section
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
         });
 
         // Intersection Observer for animations
