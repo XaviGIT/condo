@@ -57,3 +57,12 @@ Focus on a core set of features that solve the most common pain points:
 - Pagamentos (Payments)
 - Despesas (Expenses)
 -
+
+## Page details
+
+### Dashboard
+
+Features:
+
+- Emergency funds
+-
