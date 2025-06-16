@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin+: Gestão de Condomínios - Profissional e Confiável na Amadora</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #fbbf24;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: inline-block;
+            width: 240px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url("bg-amadora.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero .main-title {
+            background: #667eea;
+            padding: 5px 10px;
+        }
+
+        .hero .city-name {
+            color: var(--accent-color);
+            text-transform: capitalize;
+            background: #764ba2;
+            padding: 5px 10px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            background: #667eea;
+            padding: 5px 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--bg-light);
+            transform: scale(1.05);
+        }
+
+        .feature-item h4 {
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+        }
+
+        .form-button {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .form-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Message */
+        .form-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10b981;
+            color: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .form-success h3 {
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .city-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 280 55" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="modernGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#06d6a0;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#118ab2;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Modern geometric icon -->
+                    <g transform="translate(15, 5)">
+                        <!-- Abstract building shapes with depth -->
+                        <path d="M0 20 L15 5 L30 20 L30 35 L0 35 Z" fill="url(#modernGradient)" opacity="0.9" />
+                        <path d="M8 10 L22 0 L35 10 L35 35 L8 35 Z" fill="url(#modernGradient)" />
+                        <path d="M16 15 L28 7 L40 15 L40 35 L16 35 Z" fill="url(#accentGradient)" opacity="0.8" />
+
+                        <!-- Subtle geometric details -->
+                        <circle cx="12" cy="20" r="1.5" fill="white" opacity="0.7" />
+                        <circle cx="20" cy="15" r="1.5" fill="white" opacity="0.7" />
+                        <circle cx="28" cy="20" r="1.5" fill="white" opacity="0.7" />
+
+                        <!-- Modern lines -->
+                        <line x1="5" y1="30" x2="35" y2="30" stroke="white" stroke-width="0.5" opacity="0.5" />
+                        <line x1="12" y1="25" x2="28" y2="25" stroke="white" stroke-width="0.5" opacity="0.5" />
+                    </g>
+
+                    <!-- Company name with modern typography -->
+                    <text x="70" y="30" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="24"
+                        font-weight="600" fill="#1a1a1a" letter-spacing="-0.5px">Admin</text>
+
+                    <!-- Modern plus symbol -->
+                    <g transform="translate(145, 15)">
+                        <rect x="0" y="0" width="20" height="20" rx="6" fill="url(#accentGradient)"
+                            filter="url(#glow)" />
+                        <path d="M6 10 L14 10 M10 6 L10 14" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </g>
+
+                    <!-- Clean tagline -->
+                    <text x="70" y="47" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="10"
+                        font-weight="400" fill="#6b7280" letter-spacing="0.5px">GESTÃO DE CONDOMÍNIOS</text>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#features">Vantagens</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="city-image" id="cityImage"></div>
+        <div class="hero-content">
+            <h1><span class="main-title">Gestão de Condomínios em </span><span class="city-name" id="cityName">Amadora</span></h1>
+            <p>Profissionalismo, transparência e dedicação na administração do seu condomínio</p>
+            <a href="#contact" class="cta-button">Peça um Orçamento Grátis</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Os Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Gestão Administrativa</h3>
+                    <p>Organização completa de documentação, atas de reuniões e cumprimento de obrigações legais</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Gestão Financeira</h3>
+                    <p>Controlo rigoroso de contas, cobranças, pagamentos e apresentação de relatórios transparentes</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Manutenção</h3>
+                    <p>Coordenação de obras, reparações e manutenção preventiva com fornecedores qualificados</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Comunicação Digital</h3>
+                    <p>Portal online para condóminos com acesso a documentos, comunicados e gestão de incidências</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Apoio Jurídico</h3>
+                    <p>Assessoria legal especializada e acompanhamento em questões jurídicas do condomínio</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3>Sustentabilidade</h3>
+                    <p>Implementação de medidas eco-eficientes para redução de custos e impacto ambiental</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Porquê Escolher-nos?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="service-icon">✨</div>
+                    <h4>Experiência Comprovada</h4>
+                    <p>Mais de 10 anos a gerir condomínios com excelência</p>
+                </div>
+                <div class="feature-item">
+                    <div class="service-icon">🤝</div>
+                    <h4>Atendimento Personalizado</h4>
+                    <p>Cada condomínio é único e merece atenção dedicada</p>
+                </div>
+                <div class="feature-item">
+                    <div class="service-icon">💡</div>
+                    <h4>Inovação Tecnológica</h4>
+                    <p>Ferramentas digitais para facilitar a gestão e comunicação</p>
+                </div>
+                <div class="feature-item">
+                    <div class="service-icon">🏆</div>
+                    <h4>Resultados Garantidos</h4>
+                    <p>Redução de custos e valorização do seu património</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contacto</h2>
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xyzjwqog" method="POST">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="condo">Localização do Condomínio</label>
+                    <input type="text" id="condo" name="condo" value="Amadora" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="form-button" id="submitButton">Enviar Mensagem</button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+                <h3>✅ Mensagem Enviada com Sucesso!</h3>
+                <p>Obrigado pelo seu contacto. Responderemos em breve.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Admin+ - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        // City customization
+        const cityData = {
+            lisboa: {
+                name: 'Lisboa',
+                image: 'url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1200 600\'><rect fill=\'%23667eea\' width=\'1200\' height=\'600\'/><path fill=\'%23764ba2\' d=\'M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z\'/></svg>")'
+            },
+            porto: {
+                name: 'Porto',
+                image: 'url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1200 600\'><rect fill=\'%23667eea\' width=\'1200\' height=\'600\'/><circle cx=\'600\' cy=\'300\' r=\'200\' fill=\'%23764ba2\' opacity=\'0.5\'/></svg>")'
+            },
+            coimbra: {
+                name: 'Coimbra',
+                image: 'url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1200 600\'><rect fill=\'%23667eea\' width=\'1200\' height=\'600\'/><polygon points=\'600,100 700,400 500,400\' fill=\'%23764ba2\' opacity=\'0.5\'/></svg>")'
+            }
+        };
+
+        // Get city from URL
+        const path = window.location.pathname;
+        const cityMatch = path.match(/\/([^\/]+)$/);
+        const city = cityMatch ? cityMatch[1].toLowerCase() : null;
+
+        if (city && cityData[city]) {
+            document.getElementById('cityName').textContent = cityData[city].name;
+            document.getElementById('cityImage').style.backgroundImage = cityData[city].image;
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler - Formspree compatible version
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const button = document.getElementById('submitButton');
+            const successDiv = document.getElementById('formSuccess');
+
+            // Show loading state
+            button.textContent = 'A enviar...';
+            button.disabled = true;
+
+            try {
+                // Submit to Formspree
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success - show success message
+                    form.style.display = 'none';
+                    successDiv.style.display = 'block';
+
+                    // Scroll to success message
+                    successDiv.scrollIntoView({ behavior: 'smooth' });
+
+                    // Reset form
+                    form.reset();
+
+                    // Hide success message and show form again after 5 seconds
+                    setTimeout(() => {
+                        successDiv.style.display = 'none';
+                        form.style.display = 'block';
+                        button.textContent = 'Enviar Mensagem';
+                        button.disabled = false;
+                    }, 5000);
+
+                } else {
+                    // Error response from Formspree
+                    throw new Error('Erro no envio');
+                }
+
+            } catch (error) {
+                // Handle any errors
+                alert('Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.');
+                button.textContent = 'Enviar Mensagem';
+                button.disabled = false;
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and feature items
+        document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
