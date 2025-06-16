@@ -21,6 +21,25 @@
 
         gtag('config', 'AW-17213840528');
     </script>
+    <!-- Event snippet for Enviar formulário de leads conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17213840528/n_VlCJ7XkNwaEJC5mZBA',
+                'value': 1.0,
+                'currency': 'EUR',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
+
 </head>
 
 <body>
@@ -293,6 +312,9 @@
 
                     // Reset form
                     form.reset();
+
+                    // Report conversion
+                    gtag_report_conversion();
 
                     // Hide success message and show form again after 5 seconds
                     setTimeout(() => {
